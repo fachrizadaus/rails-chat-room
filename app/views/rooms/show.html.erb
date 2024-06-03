@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-12 col-md-4">
+    <%= link_to root_path, class: 'btn btn-sm btn-outline-secondary rounded-lg w-100 mb-2 py-2' do %>
+      <i class="las la-arrow-left"></i> Back to Home
+    <% end %>
+    <%= render partial: 'rooms' %>
+  </div>
+
+  <div class="col chat-section">
+    <div class="chat" data-channel-subscribe="room" data-room-id="<%= @room.id %>" data-current-user="<%= current_user.username %>">
+      <% @room_messages.each do |room_message| %>
+        <div class="chat-message-container">
+          <div class="d-flex <%= room_message.user == current_user ? 'flex-row-reverse sender' : 'flex-row' %>">
+              <div class="card w-80 py-1 px-2">
+                <span class="font-weight-bold text-muted sender-name mb-1"><%= room_message.user.username %></span>
+                <span><%= room_message.message %></span>
+                <div class="font-weight-light chat-date text-right">
+                    <small class="text-muted"><%= room_message.created_at.in_time_zone('Asia/Jakarta').strftime("%d %b %Y %H:%M:%S") %></small>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= simple_form_for @room_message, remote: true do |form| %>
+      <div class="input-group mb-3">
+        <%= form.input :message, as: :string, wrapper: false, label: false, input_html: { class: 'chat-input' } %>
+        <div class="input-group-append">
+          <%= button_tag(type: 'submit', class: 'btn btn-primary chat-input') do %>
+            <i class="lab la-telegram-plane"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form.input :room_id, as: :hidden %>
+    <% end %>
+  </div>
+</div>
+
+<div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="d-flex" data-role="chat-pos">
+        <div class="card w-80 py-1 px-2">
+          <span class="font-weight-bold text-muted sender-name mb-1" data-role="user-name"></span>
+          <span data-role="message-text"></span>
+          <div class="font-weight-light chat-date text-right">
+              <small class="text-muted" data-role="message-date"></small>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

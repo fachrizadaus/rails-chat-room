@@ -1,0 +1,13 @@
+<% if @rooms.present? %>
+  <nav class="nav flex-column">
+    <% @rooms.each do |room| %>
+      <div class="<%= !(current_page?(root_path) || current_page?(room_path(room))) ? 'd-none d-md-block d-lg-block' : '' %>">
+      <%= link_to room_path(room), class: "nav-link room-nav-link rounded mb-1 border #{'border-primary' if current_page?(room_path(room))}" do %>
+          <div class="d-flex flex-row align-items-center">
+            <i class="las la-users la-2x mr-2"></i> <%= room.name %>
+          </div>
+      <% end %>
+      </div>
+    <% end %>
+  </nav>
+<% end %>

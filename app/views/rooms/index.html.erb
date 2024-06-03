@@ -1,0 +1,21 @@
+<div class="row">
+  <% if @rooms.present? %>
+    <div class="col-12 col-md-4">
+      <%= render partial: 'rooms' %>
+    </div>
+    <div class="col mt-3 mt-md-0 mt-lg-0">
+      <div class="card p-5 text-center text-muted">
+        <h1>
+          <i class="lab la-rocketchat"></i>
+        </h1>
+        Pilih chat room yang tersedia untuk mulai percakapan!
+      </div>
+    </div>
+  <% else %>
+    <div class="d-flex flex-row py-5 w-100 justify-content-center card rounded-lg">
+      <div class="d-flex flex-column">
+        <span class="text-muted">There are no chat rooms!</span>
+      </div>
+    </div>
+  <% end %>
+</div>

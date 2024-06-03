@@ -1,0 +1,103 @@
+:root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+}
+
+.avatar {
+    max-height: 30px;
+    border-radius: 15px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.room-nav-link {
+    border: 1px solid lighten(#0d6efd, 40%);
+    background: lighten(#0d6efd, 45%);
+
+    &+.room-nav-link {
+        border-top: 0 none;
+    }
+}
+
+.chat {
+    border: 1px solid lighten(#6c757d, 40%);
+    background: lighten(#6c757d, 50%);
+    height: 50vh;
+    border-radius: 5px 5px 0 0;
+    overflow-y: auto;
+}
+
+.chat-input {
+    border-top: 0 none;
+    border-radius: 0 0 5px 5px;
+}
+
+.chat-section {
+    .chat::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: rgb(159, 159, 159);
+    }
+
+    .chat::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.chat-message-container {
+    padding: 5px;
+
+    .avatar {
+        margin: 5px;
+    }
+
+    .message-content {
+        padding: 5px;
+        border: 1px solid #0d6efd;
+        border-radius: 5px;
+        background: lighten(#0d6efd, 10%);
+        color: #fff;
+    }
+
+    &+.chat-message-container {
+        margin-top: 10px;
+    }
+
+    .sender-name, .chat-date {
+        font-size: 13px;
+    }
+
+    .sender>.card {
+        background: #dfffd5;
+    }
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-80 {
+    max-width: 80%;
+}

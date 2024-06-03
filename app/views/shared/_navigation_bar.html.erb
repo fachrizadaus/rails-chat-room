@@ -1,0 +1,18 @@
+<% if current_user %>
+<nav class="navbar navbar-expand-lg justify-content-between shadow">
+  <a class="navbar-brand" href="#">Simple Chat App</a>
+  <div class="d-flex flex-row align-items-center">
+    <div class="px-2">
+      <%= link_to new_room_path, class: 'btn btn-sm btn-primary rounded-lg' do %>
+        <i class="las la-comments"></i> Create Space
+      <% end %>
+    </div>
+    <div class="px-2">
+      <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-danger rounded-lg' do %>
+        <i class="las la-door-open"></i> Logout
+      <% end %>
+    </div>
+  </div>
+
+</nav>
+<% end %>

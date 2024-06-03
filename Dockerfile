@@ -22,8 +22,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
 # Install application gems
+RUN rm -rf Gemfile.lock
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && echo  || echo "** Bundler Install Failed! **"
+RUN bundle lock --add-platform x86_64-linux
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile

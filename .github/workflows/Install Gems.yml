@@ -1,0 +1,28 @@
+name: Install Gems
+
+on:
+  push: {}
+
+jobs:
+  install_gems:
+    runs-on: ubuntu-latest  # Run on Ubuntu Linux
+
+    steps:
+      - uses: actions/checkout@v3  # Checkout your code
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.1  # Adjust as needed for your project
+
+      - name: Install Gems
+        run: bundle install --quiet  # Run bundle install with quiet output
+
+      - name: Verify Gemfile.lock
+        run: |
+          if [ ! -f Gemfile.lock ]; then
+            echo "Gemfile.lock not generated!"
+            exit 1
+          fi
+          echo "Gemfile.lock generated successfully."
+

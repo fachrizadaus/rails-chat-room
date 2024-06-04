@@ -38,7 +38,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
-RUN apt-get install nodejs
+RUN apt-get update && apt-get install --no-install-recommends -y nodejs
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile

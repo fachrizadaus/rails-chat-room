@@ -81,4 +81,3 @@ gem 'factory_bot_rails'
 gem 'faker'
 
 gem 'execjs'
-gem 'therubyracer'

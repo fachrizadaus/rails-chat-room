@@ -78,7 +78,8 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: chatroom_production
-  username: chatroom
-  password: <%= ENV["CHATROOM_DATABASE_PASSWORD"] %>
+  url: <%= ENV["SCALINGO_POSTGRESQL_URL"] %>  
+#  <<: *default
+#  database: chatroom_production
+#  username: chatroom
+#  password: <%= ENV["CHATROOM_DATABASE_PASSWORD"] %>

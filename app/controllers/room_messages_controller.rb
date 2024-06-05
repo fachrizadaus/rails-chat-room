@@ -1,5 +1,5 @@
 class RoomMessagesController < ApplicationController
-  before_action :load_entities, :verify_authenticity_token
+  before_action :load_entities
 
   def create
     @room_message = RoomMessage.create user: current_user, room: @room, message: params.dig(:room_message, :message)

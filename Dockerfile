@@ -35,8 +35,6 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-RUN bundle lock --add-platform x86_64-linux
-
 # Copy application code
 COPY . .
 
@@ -44,8 +42,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-# RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-RUN ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base

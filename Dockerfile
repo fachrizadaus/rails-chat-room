@@ -19,13 +19,10 @@ RUN bundle install --without development test --deployment --path vendor/bundle
 COPY . .
 
 # Precompile assets
-RUN RAILS_ENV=production bundle exec rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 # Expose the port the app runs on
 EXPOSE 3000
-
-# Define the environment variable
-ENV RAILS_ENV production
 
 # Start the application
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

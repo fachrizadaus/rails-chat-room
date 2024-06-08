@@ -19,18 +19,15 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-#development:
-#  <<: *default
-#  database: chatroom_development
 development:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['SCALINGO_PG_DBNAME'] %>
+  database: <%= ENV['PG_DBNAME'] %>
   pool: 5
-  username: <%= ENV['SCALINGO_PG_USER'] %>  # Reference environment variable
-  password: <%= ENV['SCALINGO_PG_PASS'] %>  # Reference environment variable
-  host: rails-chatr-4833.postgresql.b.osc-fr1.scalingo-dbs.com
-  port: 35584
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASS'] %>
+  host: <%= ENV['PG_HOST'] %>
+  port: <%= ENV['PG_PORT'] %>
   sslmode: prefer
 
   # The specified database role being used to connect to PostgreSQL.
@@ -88,7 +85,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 #production:
-#  url: <%#= ENV["SCALINGO_POSTGRESQL_URL"] %>
+#  url: <%#= ENV["POSTGRESQL_URL"] %>
 #  <<: *default
 #  database: chatroom_production
 #  username: chatroom
@@ -97,10 +94,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['SCALINGO_PG_DBNAME'] %>
+  database: <%= ENV['PG_DBNAME'] %>
   pool: 5
-  username: <%= ENV['SCALINGO_PG_USER'] %>  # Reference environment variable
-  password: <%= ENV['SCALINGO_PG_PASS'] %>  # Reference environment variable
-  host: rails-chatr-4833.postgresql.b.osc-fr1.scalingo-dbs.com
-  port: 35584
+  username: <%= ENV['PG_USER'] %>
+  password: <%= ENV['PG_PASS'] %>
+  host: <%= ENV['PG_HOST'] %>
+  port: <%= ENV['PG_PORT'] %>
   sslmode: prefer
